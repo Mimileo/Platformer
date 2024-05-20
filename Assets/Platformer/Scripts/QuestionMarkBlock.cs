@@ -9,7 +9,7 @@ public class QuestionMarkBlock : MonoBehaviour
     public float jumpDuration = 0.1f;   
 
     private Vector3 originalPosition;
-    private bool isHit = false;        
+    public bool isHit = false;        
     private new Renderer renderer;
 
     void Start()
@@ -28,7 +28,7 @@ public class QuestionMarkBlock : MonoBehaviour
         }
     }
 
-    private IEnumerator Jump()
+    public IEnumerator Jump()
     {
         // Move up
         Vector3 targetPosition = originalPosition + new Vector3(0, jumpForce, 0);

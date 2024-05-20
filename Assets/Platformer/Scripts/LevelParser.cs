@@ -11,6 +11,8 @@ public class LevelParser : MonoBehaviour
     public GameObject brickPrefab;
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
+    public GameObject waterPrefab;
+    public GameObject goalPrefab;
 
     public Transform environmentRoot; // parent - clean, no need for thousand of blocks
 
@@ -85,6 +87,19 @@ public class LevelParser : MonoBehaviour
                 {
                     Vector3 newQuestionPos = new Vector3(column, row, 0f);
                     GameObject newQuestion = Instantiate(questionBoxPrefab, newQuestionPos, Quaternion.identity, environmentRoot);        
+                }
+                
+                if (letter == 'w')
+                {
+                    Vector3 newWaterPos = new Vector3(column, row, 0f);
+                    GameObject newQuestion = Instantiate(waterPrefab, newWaterPos, Quaternion.identity, environmentRoot);        
+                }
+                
+                if (letter == 'g')
+                {
+                    Vector3 newGoalPos = new Vector3(column, row, 0f);
+                    GameObject NewGoal = Instantiate(goalPrefab, newGoalPos, Quaternion.identity, environmentRoot);
+                    
                 }
               
            

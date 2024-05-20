@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
 
 
-    private int initialTime = 400;
+    private int initialTime = 100;
     private float elapsedTime = 0f;
     private int points = 0;
     private int coinAmount = 0;
@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
                else if (clickedObject.name.Contains("Question"))
                {
                    AddCoin(questionMarkValue);
-                   // Todo: change texture to solid brown 
                    AudioManager.Instance.PlayCoin();
 
                }
@@ -117,6 +116,10 @@ public class GameManager : MonoBehaviour
     private void UpdateTimerText()
     {
         int remainingTime = initialTime - (int)elapsedTime;
+        if (remainingTime < 1)
+        {
+            Debug.Log($"Time is up! Level Failed!");
+        } 
         timerText.text = $"Time \n {remainingTime}";
     }
     
@@ -144,7 +147,7 @@ public class GameManager : MonoBehaviour
         coinsText.text = $"x {coinAmount:00}";
     }
     
-    private void SpawnBrickPieces(Vector3 spawnPosition)
+    public void SpawnBrickPieces(Vector3 spawnPosition)
     {
         Vector3[] directions = {
             new Vector3(-1, 1, 0),
@@ -156,13 +159,20 @@ public class GameManager : MonoBehaviour
         foreach (var direction in directions)
         {
             GameObject piece = Instantiate(brickPiecePrefab, spawnPosition, Quaternion.identity);
+            piece.layer = LayerMask.NameToLayer("Debris");  // Set the layer to Debris
+
             Rigidbody rb = piece.GetComponent<Rigidbody>();
-            rb.AddForce(direction * Random.Range(5f, 10f), ForceMode.Impulse);
-            Destroy(piece, 2f); // Destroy the piece after 2 seconds
+            if (rb != null)
+            {
+                rb.isKinematic = false; // Ensure Rigidbody is not kinematic
+                rb.AddForce(direction * Random.Range(5f, 10f), ForceMode.Impulse);
+            }
+
+            Destroy(piece, 2f);  // Destroy the piece after 2 seconds
         }
-        
-      
+    
     }
+
     
     
 }

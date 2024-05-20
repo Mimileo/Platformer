@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2652198492393551387}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4f26c6db60307ea46b28eecc3df6bd06, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -118,8 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01de4663c44596b4c94e98129d2ce0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rate: 1
-  jumpForce: 0.5
-  jumpDuration: 0.1
   brownMaterial: {fileID: 2100000, guid: da2e7196bcfd20a418df604a615195e2, type: 2}
   questionMaterial: {fileID: 2100000, guid: 411f49e9c5a15c44a8d5fc6198fb4d33, type: 2}
+  jumpForce: 0.5
+  jumpDuration: 0.1
